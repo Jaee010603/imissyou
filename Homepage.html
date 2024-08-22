@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        background-color: #3B4049;
+    }
+
+    .text {
+        text-align: center;
+        margin-bottom: 20px;
+        text-emphasis-color: white;
+    }
+
+    .text span {
+        opacity: 0;
+        animation: fadeIn 0.5s forwards;
+        animation-delay: calc(0.1s * var(--index));
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+    .wrapper {
+        height: 200px;
+        width: 300px;
+        background-color: #3760C9;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        z-index: 0;
+    }
+
+    .lid {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-right: 150px solid transparent;
+        border-bottom: 100px solid transparent;
+        border-left: 150px solid transparent;
+        transform-origin: top;
+        transition: transform 0.25s linear;
+    }
+
+    /* Lid when closed */
+    .lid.one {
+        border-top: 100px solid #658ced;
+        transform: rotateX(0deg);
+        z-index: 3;
+        transition-delay: 0.75s;
+    }
+
+    /* Lid when opened */
+    .lid.two {
+        border-top: 100px solid #3760C9;
+        transform: rotateX(90deg);
+        z-index: 1;
+        transition-delay: 0.5s;
+    }
+
+    .envelope {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    .envelope a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-top: 100px solid transparent;
+        border-right: 150px solid #C4DFF0;
+        border-bottom: 100px solid #C4DFF0;
+        border-left: 150px solid #a4d4f2;
+        position: relative;
+        text-decoration: none;
+    }
+
+    .letter {
+        position: absolute;
+        top: 0;
+        width: 80%;
+        height: 80%;
+        background-color: white;
+        border-radius: 15px;
+        z-index: 2;
+        transition: 0.5s;
+    }
+
+    .letter p {
+        text-align: center;
+        font-size: 30px;
+        margin-top: 30px;
+        color: #3B4049;
+    }
+
+    .wrapper:hover .lid.one {
+        transform: rotateX(90deg);
+        transition-delay: 0s;
+    }
+
+    .wrapper:hover .lid.two {
+        transform: rotateX(180deg);
+        transition-delay: 0.25s;
+    }
+
+    .wrapper:hover .letter {
+        transform: translateY(-50px);
+        transition-delay: 0.5s;
+    }
+</style>
+</head>
+<body>
+    <div class="text">
+        <span style="--index:1;">F</span>
+        <span style="--index:2;">o</span>
+        <span style="--index:3;">r</span>
+        <span>&nbsp;</span>
+        <span style="--index:4;">M</span>
+        <span style="--index:5;">y</span>
+        <span>&nbsp;</span>
+        <span style="--index:6;">O</span>
+        <span style="--index:7;">n</span>
+        <span style="--index:8;">l</span>
+        <span style="--index:9;">y</span>
+        <span>&nbsp;</span>
+        <span style="--index:10;">M</span>
+        <span style="--index:11;">e</span>
+        <span style="--index:12;">o</span>
+        <span style="--index:13;">w </span>
+        <br>
+    </div>
+    <div class="wrapper">
+        <div class="lid one"></div>
+        <div class="lid two"></div>
+        <div class="envelope">
+            <a href="main.html" target="_blank"></a>
+        </div>
+        <div class="letter">
+            <p>Gift ko HUHU</p>
+        </div>
+    </div>
+</body>
+</html>

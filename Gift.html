@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A GIFT FOR MY LOVE</title>
+    <style>
+        html {
+  scroll-behavior: smooth;
+}
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+        
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .text-container {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .sentence {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .image-gallery img {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+        
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        #overlay img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        
+        #hearts-container {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .heart {
+            color: red;
+            font-size: 20px;
+            position: absolute;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .night {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    .night::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><circle cx="50%" cy="50%" r="2" fill="white"/><circle cx="30%" cy="70%" r="1.5" fill="white"/><circle cx="80%" cy="20%" r="1" fill="white"/><circle cx="10%" cy="90%" r="1.2" fill="white"/><circle cx="70%" cy="50%" r="1.8" fill="white"/><circle cx="20%" cy="30%" r="1.3" fill="white"/><circle cx="90%" cy="80%" r="1.4" fill="white"/><circle cx="40%" cy="10%" r="1.6" fill="white"/><circle cx="85%" cy="60%" r="1.1" fill="white"/><circle cx="15%" cy="20%" r="1.7" fill="white"/><circle cx="60%" cy="90%" r="2" fill="white"/><circle cx="5%" cy="50%" r="1.2" fill="white"/><circle cx="75%" cy="40%" r="1.5" fill="white"/><circle cx="25%" cy="80%" r="1.8" fill="white"/><circle cx="95%" cy="10%" r="1" fill="white"/></svg>');
+        animation: stars 60s infinite linear;
+    }
+
+    @keyframes stars {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-100%);
+        }
+    }
+    .text-container::before {
+        content: '';
+        position: absolute;
+        top: -20px; /* Adjust as needed */
+        left: -20px; /* Adjust as needed */
+        right: -20px; /* Adjust as needed */
+        bottom: -20px; /* Adjust as needed */
+        background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity as needed */
+        backdrop-filter: blur(10px); /* Adjust blur intensity as needed */
+        z-index: -1;
+    }
+    .text-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .text-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity as needed */
+        backdrop-filter: blur(10px); /* Adjust blur intensity as needed */
+        z-index: -1;
+    }
+
+    div.scroll-container {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+}
+#navbar {
+  background-color: #333; /* Black background color */
+  position: fixed; /* Make it stick/fixed */
+  top: -50px; /* Hide the navbar 50 px outside of the top view */
+  width: 100%; /* Full width */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+}
+
+/* Style the navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+    </style>
+</head>
+<body class="night">
+   
+    <div class="content-container">
+        <div class="text-container">
+            
+            <h1>Happy 1st Monthsary Meowww!</h1>
+            <p></p>
+                <p>Ano nga ba ang nagustuhan ko sayo?</p>
+                
+                <p>Alam mo ung feeling na pagod ka sa work or school tapos nun gusto mong humilata sa kama at magpahinga, tapos ung feeling na nanalo ka sa 50/50 in a streak sa mga gustong mong character tas ung feeling na kakagising mo lang sa umaga tas uupo ka tas hihigop ka ng kape. Marami kasi akong nagustohan about you, ung kagandahan at ka cutean mo , ung tawa mo AHHAHA tas ung mata mo, even ung paglalakad mo, pagsasalita mo and kapag makikipagkwentuhan ka grabe ung vibes. I felt the peace in you, alam mo ung wala ako sa bahay pero kapag kasama kita parang nandun ako. I can't explain it all kasi ang dami meow ih pero basta ang alam ko mahal kita.</p>
+          
+          
+                <p>Keep fighting satin ha sa studies, life, love at sa iba pa. Nandito lang ako para sayo always HEHEHEH</p>
+                <p>while(true){ System.out.print('I love youu '); }</p>
+                <a href="flower.html"><p>GET YOUR FLOWER HERE!</p></a>
+               
+            </div>
+        </div>
+        <div class="image-gallery">
+            <img src="431480510_1058967468665338_4797080973094831214_n.jpg" alt="Image 1" width="600" height="400">
+            <img src="429510707_1087601889242554_7649393138935171308_n.jpg" alt="Image 2" width="600" height="400">
+            <img src="430012355_783388333849210_5650048714803649162_n.jpg" alt="Image 3" width="600" height="400">
+            <img src="429510707_434482435582744_3534876844722674778_n.jpg" alt="Image 4" width="600" height="400">
+            <img src="431305908_783287573241946_96372569944952130_n.jpg" alt="Image 5" width="600" height="400">
+            <img src="434163407_958907418956987_244975740775597159_n.jpg" alt="Image 6" width="600" height="400">
+            <img src="432750159_737249758496217_1579962023295029082_n.jpg" alt="Image 7" width="600" height="400">
+           
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="hearts-container"></div>
+
+    <script>
+      
+        function enlargeImage(imgSrc) {
+            const overlay = document.getElementById("overlay");
+            overlay.innerHTML = `<img src="${imgSrc}" alt="Enlarged Image">`;
+            overlay.style.display = "block";
+            overlay.onclick = function() {
+                this.style.display = "none";
+            };
+        }
+
+        // Add event listeners to all images
+        const images = document.querySelectorAll(".image-gallery img");
+        images.forEach(img => {
+            img.addEventListener("click", function() {
+                enlargeImage(this.src);
+            });
+        });
+
+        
+    // Function to create falling stars with different speeds
+    function createStars() {
+        const starsContainer = document.getElementById("stars-container");
+        const starSymbols = ["★", "✯", "✦", "✵", "✶"];
+        const numStars = 20;
+        const animationDurationBase = 5; // Base animation duration in seconds
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.color = getRandomColor(); // Get random color for stars
+            const animationDuration = animationDurationBase + Math.random() * 5; // Randomize duration
+            star.style.animationDuration = animationDuration + "s";
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // Call the function to create stars
+    createStars();
+
+    // Function to get random color for stars
+    function getRandomColor() {
+        const colors = ["#ffffff", "#f0f8ff", "#add8e6", "#ffefd5", "#ffe4e1"];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+    window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+}
+</script>
+
+</body>
+</html>
